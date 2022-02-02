@@ -48,7 +48,12 @@ setInterval(() => {
 function run() {
   let teachers = [];
   let lessons = {};
-  puppeteer.launch({ headless: true }).then(async (browser) => {
+  puppeteer.launch({ headless: true, 
+  args : [
+    '--no-sandbox',
+    '--disable-setuid-sandbox'
+  ]
+}).then(async (browser) => {
     const page = await browser.newPage();
     page.on("response", async (response) => {
       if (response.url() == "https://app-gateway.ornikar.com/graphql") {
