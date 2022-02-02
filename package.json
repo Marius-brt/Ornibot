@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "npm install"
+    "heroku-prebuild": "npm install",
+    "start": "node index.js"
   },
   "author": "marius.brt",
   "license": "ISC",
