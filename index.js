@@ -77,12 +77,15 @@ function run() {
         } catch (ex) {}
       }
     });
-    await page.goto("https://app.ornikar.com/connexion");
+    await page.goto("https://app.ornikar.com/connexion", {
+      waitUntil: 'networkidle0',
+    });
     await page.type("#email", process.env.EMAIL);
     await page.type("#password", process.env.PASSWORD);
     await page.keyboard.press("Enter");
-    await page.waitForNavigation({ waituntil: "domcontentloaded" });
+    await page.waitForNavigation({ waituntil: "networkidle0" });
     await page.goto("https://app.ornikar.com/planning");
+    await page.waitForNavigation({ waituntil: "networkidle0" });
     await page.waitForTimeout(4000);
     for await (const [key, value] of Object.entries(lessons)) {
       for await (lesson of value) {
