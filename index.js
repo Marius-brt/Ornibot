@@ -6,8 +6,6 @@ const { Webhook, MessageBuilder } = require("discord-webhook-node");
 const hook = new Webhook(process.env.WEBHOOK);
 const cron = require("node-cron");
 
-hook.send("Yo!");
-
 run();
 
 cron.schedule("0 * * * *", () => {
@@ -18,6 +16,8 @@ hook.setUsername("Ornibot");
 hook.setAvatar(
   "https://finance-et-compagnies.com/storage/media/1133/YvbNuQUB_400x400.png"
 );
+
+hook.send("Yo!");
 
 puppeteer.use(StealthPlugin());
 
