@@ -54,6 +54,7 @@ function run() {
     '--disable-setuid-sandbox'
   ]
 }).then(async (browser) => {
+    try {      
     const page = await browser.newPage();
     page.on("response", async (response) => {
       if (response.url() == "https://app-gateway.ornikar.com/graphql") {
@@ -131,6 +132,8 @@ function run() {
       }
     }
     await browser.close();
+    }
+    catch(ex){}
   });
 }
 
